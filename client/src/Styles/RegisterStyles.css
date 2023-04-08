@@ -1,0 +1,11 @@
+.form-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgb(35, 175, 175);
+}
+.card{
+    background-color: rgb(209, 191, 227);
+    width: 30%;
+}
