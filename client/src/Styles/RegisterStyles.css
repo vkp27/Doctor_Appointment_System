@@ -3,9 +3,32 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: rgb(35, 175, 175);
+    color: white;
+    /* background-color: rgb(35, 175, 175); */
+    background-image: url("C:\Users\vaibh\OneDrive\Documents\Doctor_Appointment_System\client\src\Assets\doc2.jpg");
+
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .card{
-    background-color: rgb(209, 191, 227);
-    width: 30%;
+    background-color: rgb(165,201,220);
+    opacity: 0.9;
+    min-width: 30vw;
+    border: none;
 }
+
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+

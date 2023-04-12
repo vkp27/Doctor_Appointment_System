@@ -3,15 +3,20 @@ import '../Styles/RegisterStyles.css'
 import {Form, message} from 'antd'
 import axios from "axios"
 import {Link, useNavigate} from 'react-router-dom'
-
+import { useDispatch } from 'react-redux'
+import { showLoading, hideLoading } from '../Redux/Features/alertSlice'
 
 const Register = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   //form handler
   const onFinishHandler = async (values) => {
     try {
+
+      dispatch(showLoading())
       const res = await axios.post('/api/v1/user/register', values)
+      dispatch(hideLoading())
 
       //if success is true
       if(res.data.success){
@@ -23,6 +28,8 @@ const Register = () => {
       }
 
     } catch (error) {
+
+      dispatch(hideLoading())
       console.log(error)
       //antd provides an alert message box
       message.error('Something went wrong')
@@ -32,7 +39,7 @@ const Register = () => {
   return (
     <>
       <div className='form-container'>
-        <Form layout='vertical' onFinish={onFinishHandler} className='card p-5' >
+        <Form layout='vertical' onFinish={onFinishHandler} className='card p-5'>
             <h3 className='text-center'>Registration Form</h3>
             <Form.Item label='Name' name='name'>
               <input type='text' required />

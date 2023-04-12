@@ -2,15 +2,44 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import HomePage from './Pages/HomePage'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
+import { useSelector } from 'react-redux'
+import Spinner from './Components/Spinner'
+import ProtectedRoute from './Components/ProtectedRoute'
+import PublicRoute from './Components/PublicRoute'
 
 const App = () => {
+  const {loading} = useSelector(state => state.alerts)
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-      </Routes>
+      {loading ? <Spinner /> :
+        <Routes>
+          <Route 
+            path='/' 
+            element={
+              <ProtectedRoute>
+                <HomePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route 
+            path='/login' 
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            } 
+          />
+          <Route 
+            path='/register' 
+            element={
+              <PublicRoute>
+                <Register />
+              </PublicRoute>
+            } 
+          />
+        </Routes>
+      }
     </BrowserRouter>
   )
 }
