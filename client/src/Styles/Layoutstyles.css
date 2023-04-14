@@ -11,8 +11,8 @@
     min-height: 100%;
     width: 300px;
     border-radius: 5px;
-    background-color: rgb(41, 17, 129);
-    box-shadow: 0 0 2px gray;
+    background-color: rgb(21, 121, 175);
+    /* box-shadow: 0 0 2px gray; */
     margin-right: 20px;
     color: white;
 }
@@ -25,15 +25,17 @@
 .header {
     height: 10vh;
     margin-bottom: 20px;
-    box-shadow: 0 0 2px gray;
-    background-color: white;
+    /* box-shadow: 0 0 2px gray; */
+    background-color: rgb(165,201,220);
 }
 
 .body{
-    height: 85vh;
+    height: 110vh;
     margin-bottom: 20px;
-    box-shadow: 0 0 2px gray;
-    background-color: white;
+    /* box-shadow: 0 0 2px gray; */
+    /* background-color: white */
+    opacity: 1;
+
 }
 
 .logo h6 {
@@ -89,3 +91,4 @@
     margin: 0 10px;
     text-transform: uppercase;
 }
+

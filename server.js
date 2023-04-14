@@ -19,6 +19,8 @@ app.use(morgan('dev'))
 
 //routes
 app.use('/api/v1/user', require('./Routes/userRoutes'))
+app.use('/api/v1/admin', require('./Routes/adminRoutes'))
+app.use('/api/v1/doctor', require('./Routes/doctorRoutes'))
 
 //port
 const port = process.env.PORT

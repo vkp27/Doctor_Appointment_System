@@ -1,11 +1,11 @@
 import React from "react";
-// import Layout from "./../components/Layout";
 import Layout from "../Components/Layout";
 import { Col, Form, Input, Row, TimePicker, message } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { showLoading, hideLoading } from "../Redux/Features/alertSlice";
 import axios from "axios";
+
 
 const ApplyDoctor = () => {
   const { user } = useSelector((state) => state.user);
@@ -18,7 +18,9 @@ const ApplyDoctor = () => {
       dispatch(showLoading());
       const res = await axios.post(
         "/api/v1/user/apply-doctor",
-        { ...values, userId: user._id },
+        { ...values, 
+          userId: user._id,
+        },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -42,7 +44,7 @@ const ApplyDoctor = () => {
   return (
     <Layout>
       <h1 className="text-center">Apply Doctor</h1>
-      <Form layout="vertical" onFinish={handleFinish} className="m-3">
+      <Form layout="vertical" onFinish={handleFinish} className="vForm m-3">
         <h4 className="">Personal Details : </h4>
         <Row gutter={20}>
           <Col xs={24} md={24} lg={8}>

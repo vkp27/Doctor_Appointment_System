@@ -111,4 +111,74 @@ const applyDoctorController = async(req, res) => {
         })   
     }
 }
-module.exports = {loginController, registerController, authController, applyDoctorController} 
+
+//Notification Controller
+const getAllNotificationController = async (req, res) => {
+    try {
+        
+        const user = await userModel.findOne({_id: req.body.userId})
+        const seennotification = user.seennotification
+        const notification = user.notification
+        seennotification.push(...notification)
+        user.notification = []
+        user.seennotification = notification
+        const updatedUser = await user.save()
+        res.status(200).send({
+            success: true,
+            message: 'All notifications marked as read',
+            data: updatedUser
+        })
+    } catch (error) {
+        console.log(error)
+        res.satus(500).send({
+            message: 'Error in notification',
+            success: false,
+            error
+        })
+    }
+}
+
+//delete notification
+const deleteAllNotificationController = async (req, res) => {
+    try {
+        const user = await userModel.findOne({_id: req.body.userId})
+        user.notification = []
+        user.seennotification = []
+        const updatedUser = await user.save()
+        updatedUser.password = undefined
+        res.status(200).send({
+            success: true,
+            message: 'Notification Deleted Successfully',
+            data: updatedUser
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            success: false,
+            message: 'Unable to delete all notifications',
+            error
+        })
+    }
+}
+
+//get all doctors
+const getAllDoctorController = async(req, res) => {
+    try {
+        const doctors = await doctorModel.find({status: "approved"})
+        res.status(200).send({
+            success: true,
+            message: 'Doctors Lists Fetched Successfully',
+            data: doctors
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            success: false,
+            error,
+            message: 'Error while fetching doctor'
+        })
+    }
+}
+
+
+module.exports = {loginController, registerController, authController, applyDoctorController, getAllNotificationController, deleteAllNotificationController, getAllDoctorController} 
