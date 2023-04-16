@@ -11,6 +11,9 @@ import NotificationPage from './Pages/NotificationPage'
 import Doctors from './Pages/Admin/Doctors'
 import Users from './Pages/Admin/Users'
 import Profile from './Pages/Doctor/Profile'
+import BookinPage from './Pages/BookinPage'
+import Appointments from './Pages/Appointments'
+import DoctorAppointments from './Pages/Doctor/DoctorAppointments'
 
 const App = () => {
   const {loading} = useSelector(state => state.alerts)
@@ -60,6 +63,14 @@ const App = () => {
             }
           />
           <Route 
+            path='/doctor/book-appointment/:doctorId' 
+            element={
+              <ProtectedRoute>
+                <BookinPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route 
             path='/notification' 
             element={
               <ProtectedRoute>
@@ -81,6 +92,22 @@ const App = () => {
               <PublicRoute>
                 <Register />
               </PublicRoute>
+            } 
+          />
+          <Route 
+            path='/appointments' 
+            element={
+              <ProtectedRoute>
+                <Appointments />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path='/doctor-appointments' 
+            element={
+              <ProtectedRoute>
+                <DoctorAppointments />
+              </ProtectedRoute>
             } 
           />
         </Routes>
