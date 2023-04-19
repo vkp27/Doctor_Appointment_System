@@ -1,6 +1,6 @@
 import React from 'react'
 import '../Styles/RegisterStyles.css'
-import {Form, message} from 'antd'
+import {Form, message, Input} from 'antd'
 import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
@@ -17,7 +17,7 @@ const Login = () => {
       //to display loading spinner
       dispatch(showLoading())
       const res = await axios.post('/api/v1/user/login', values)
-      window.location.reload()
+      // window.location.reload()
       dispatch(hideLoading())
       if(res.data.success){
         //store token in localstorage
@@ -42,10 +42,10 @@ const Login = () => {
         <Form layout='vertical' onFinish={onFinishHandler} className='card p-5' >
             <h3 className='text-center'>Login Form</h3>
             <Form.Item label='Email' name='email'>
-              <input type='email' required />
+              <Input type='email' required />
             </Form.Item>
             <Form.Item label='Password' name='password'>
-              <input type='password' required />
+              <Input type='password' required />
             </Form.Item>
             <button className='btn btn-primary' type='submit'>Login</button>
             <Link to='/register' >Not a user?</Link>

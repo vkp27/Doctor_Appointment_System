@@ -27,10 +27,11 @@ const HomePage = () => {
   useEffect(() => {
     getUserData()
   }, [])
+  
   return (
     <div>
         <Layout>
-          <h1 className='text-center'>Home Page</h1> 
+          {/* <h1 className='text-center'>Home Page</h1>  */}
           <Row>
             {doctors && doctors.map((doctor) => (
               <DoctorsList doctor={doctor}/>

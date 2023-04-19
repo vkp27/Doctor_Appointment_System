@@ -20,8 +20,8 @@ const ProtectedRoute = ({children}) => {
         dispatch(setUser(res.data.data))
       }
       else{
+        localStorage.clear();
         <Navigate to='/login' />
-        localStorage.clear()
       }
     } catch (error) {
       dispatch(hideLoading())

@@ -73,12 +73,12 @@ const Profile = () => {
   }, []);
   return (
     <Layout>
-      <h1>Manage Profile</h1>
+      {/* <h1>Manage Profile</h1> */}
       {doctor && (
         <Form
           layout="vertical"
           onFinish={handleFinish}
-          className="m-3"
+          className="m-2 p-2 card"
           initialValues={{
             ...doctor,
             timings: [
@@ -179,7 +179,7 @@ const Profile = () => {
             </Col>
             <Col xs={24} md={24} lg={8}>
               <Form.Item label="Timings" name="timings" required>
-                <TimePicker.RangePicker format="HH:mm" />
+                <TimePicker.RangePicker format="HH:mm a" showTime={{ use12Hours: true }} />
               </Form.Item>
             </Col>
             <Col xs={24} md={24} lg={8}></Col>

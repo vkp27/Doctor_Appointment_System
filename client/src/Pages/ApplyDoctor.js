@@ -34,10 +34,10 @@ const ApplyDoctor = () => {
       );
       dispatch(hideLoading());
       if (res.data.success) {
-        message.success(res.data.success);
+        message.success(res.data.message);
         navigate("/");
       } else {
-        message.error(res.data.success);
+        message.error(res.data.message);
       }
     } catch (error) {
       dispatch(hideLoading());
@@ -48,8 +48,8 @@ const ApplyDoctor = () => {
   };
   return (
     <Layout>
-      <h1 className="text-center">Apply Doctor</h1>
-      <Form layout="vertical" onFinish={handleFinish} className="vForm m-3">
+      {/* <h1 className="text-center">Apply Doctor</h1> */}
+      <Form layout="vertical" onFinish={handleFinish} className="vForm m-2 card p-2">
         <h4 className="">Personal Details : </h4>
         <Row gutter={20}>
           <Col xs={24} md={24} lg={8}>
@@ -142,7 +142,7 @@ const ApplyDoctor = () => {
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item label="Timings" name="timings" required>
-              <TimePicker.RangePicker format="HH:mm" />
+              <TimePicker.RangePicker showTime={{ use12Hours: true }} format="HH:mm a" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}></Col>

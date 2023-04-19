@@ -34,9 +34,9 @@ const BookinPage = () => {
       }
     
     /*-----------Handle Booking--------------*/
-    const handleBooking = async() => {
+    const handleBooking = async () => {
         try {
-            // setIsAvailable(true)
+            setIsAvailable(true)
             if(!date && !time){
                 return alert('Date and Time Required')
             }
@@ -96,10 +96,10 @@ const BookinPage = () => {
 
     return (
         <Layout>
-            <h1>Booking Page</h1>
+            {/* <h1 className='text-center'>Booking Page</h1> */}
             <div className='container m-2'>
                 {doctors && (
-                    <div>
+                    <div className='card m-2 p-2 w-50'>
                         <h4>
                             Dr. {doctors.firstName} {doctors.lastName}
                         </h4>
@@ -113,6 +113,8 @@ const BookinPage = () => {
                                 setDate(moment(value).format('DD-MM-YYYY'))
                              } } />
                             <TimePicker
+                            className = "m-2" 
+                            showTime={{ use12Hours: true }}
                             aria-required={"true"}
                             format="HH:mm" onChange={(value) =>
                                 {

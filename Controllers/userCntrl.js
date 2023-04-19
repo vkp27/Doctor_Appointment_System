@@ -185,9 +185,9 @@ const getAllDoctorController = async(req, res) => {
 //Book appointment
 const bookAppointmentController = async (req, res) => {
     try {
-        res.body.date = moment(req.body.date, 'DD-MM-YYYY').toISOString()
+        req.body.date = moment(req.body.date, 'DD-MM-YYYY').toISOString()
         req.body.time = moment(req.body.time, 'HH:mm').toISOString()
-        res.body.status = 'pending'
+        req.body.status = "pending"
         const newAppointment = new appointmentModel(req.body)
         await newAppointment.save()
         const user = await userModel.findOne({_id: req.body.doctorInfo.userId})

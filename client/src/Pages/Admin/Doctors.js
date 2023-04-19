@@ -35,6 +35,7 @@ const Doctors = () => {
       })
       if(res.data.success){
         message.success(res.data.message)
+        window.location.reload()
       }
     } catch (error) {
       message.error('Something went wrong!')
@@ -76,7 +77,7 @@ const Doctors = () => {
 
   return (
     <Layout>
-      <h1 className='text-center p-2'>Doctors List</h1>
+      {/* <h1 className='text-center p-2'>Doctors List</h1> */}
       <Table columns={columns} dataSource={doctors} />
     </Layout>
   )

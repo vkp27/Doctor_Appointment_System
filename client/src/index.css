@@ -23,4 +23,5 @@ body{
     background-image: url('C:\Users\vaibh\OneDrive\Documents\Doctor_Appointment_System\client\src\Assets\doc2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }

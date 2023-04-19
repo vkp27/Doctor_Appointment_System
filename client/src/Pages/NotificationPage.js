@@ -69,16 +69,16 @@ const NotificationPage = () => {
     }
   return (
     <Layout>
-        <h4 className='p-3 text-center'>Notification Page</h4>
+        {/* <h4 className='p-3 text-center'>Notification Page</h4> */}
         <Tabs>
-            <Tabs.TabPane tab="unRead" key={0}>
+            <Tabs.TabPane tab="Unread" key={0}>
                 <div className='d-flex justify-content-end'>
-                    <h5 className='p-2' onClick={handleMarkAllRead} style={{cursor: 'pointer'}}>Mark All Read</h5>
+                    <h5 className='p-2 text-success' onClick={handleMarkAllRead} style={{cursor: 'pointer'}}>Mark All Read</h5>
                 </div>
                 {
                     user?.notification.map(notificationMsg => (
-                        <div className='card' >
-                            <div className="card-text" style= {{cursor: 'pointer'}}onClick={() => navigate(notificationMsg.onClickPath)}>
+                        <div className='card m-2' >
+                            <div className="card-text p-2 m-1" style= {{cursor: 'pointer'}}onClick={() => navigate(notificationMsg.onClickPath)}>
                                 {notificationMsg.message}
                             </div>
                         </div>
@@ -87,12 +87,12 @@ const NotificationPage = () => {
             </Tabs.TabPane>
             <Tabs.TabPane tab="Read" key={1}>
                 <div className='d-flex justify-content-end'>
-                    <h5 className='p-2 text-primary' onClick={handleDeleteAllRead} style={{cursor: 'pointer'}}>Delete All Read</h5>
+                    <h5 className='p-2 text-danger' onClick={handleDeleteAllRead} style={{cursor: 'pointer', color: 'red'}}>Delete All Read</h5>
                 </div>
                 {
                     user?.seennotification.map(notificationMsg => (
-                        <div className='card' >
-                            <div className="card-text" style= {{cursor: 'pointer'}}onClick={() => navigate(notificationMsg.onClickPath)}>
+                        <div className='card m-2' >
+                            <div className="card-text p-2 m-1 text-dark" style= {{cursor: 'pointer'}}onClick={() => navigate(notificationMsg.onClickPath)}>
                                 {notificationMsg.message}
                             </div>
                         </div>
