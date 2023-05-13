@@ -3,6 +3,7 @@ const colors = require('colors')
 const morgan = require('morgan')
 const dotenv = require('dotenv')
 const connectDB = require('./Config/db')
+const path = require('path')
 
 //dotenv config
 dotenv.config()
@@ -21,6 +22,13 @@ app.use(morgan('dev'))
 app.use('/api/v1/user', require('./Routes/userRoutes'))
 app.use('/api/v1/admin', require('./Routes/adminRoutes'))
 app.use('/api/v1/doctor', require('./Routes/doctorRoutes'))
+
+//static files
+app.use(express.static(path.join(__dirname, './client/build')))
+
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, './client/build/index.html'))
+})
 
 //port
 const port = process.env.PORT
